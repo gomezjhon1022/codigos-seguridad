@@ -6,6 +6,8 @@ function UseState({name}) {
     value: '',
     error: false,
     loading: false,
+    delete: false,
+    confirmed: false,
   });
   console.log(state);
   React.useEffect(() => {
@@ -18,6 +20,7 @@ function UseState({name}) {
             ...state,
             error: false,
             loading: false,
+            confirmed: true,
           });
         } else {
           setState({
@@ -31,7 +34,9 @@ function UseState({name}) {
     }
     console.log("Terminando el efecto")
   }, [state.loading]);
-  return (
+  
+  if (!state.delete && !state.confirmed) {
+    return (
     <div>
       <h2>Eliminar {name}</h2>
       <p>Por favor, escribe el código de seguridad</p>
@@ -62,6 +67,52 @@ function UseState({name}) {
       >Comprobar</button>
     </div>
   )
+  } else if (state.confirmed && !state.delete) {
+    return (
+      <React.Fragment>
+        <p>Se necesita confirmación. ¿Estás seguro?</p>
+        <button
+          onClick={() => {
+            setState({
+              ...state,
+              delete:true,
+            });
+          }}
+        >
+        Sí, eliminar
+        </button>
+        <button
+          onClick={() => {
+            setState({
+              ...state,
+              confirmed: false,
+              value: '',
+            })
+          }}
+        >
+        No, no quiero eliminar
+        </button>
+      </React.Fragment> 
+    );
+    } else {
+      return (
+        <React.Fragment>
+          <p>Eliminado con exito</p>
+          <button
+          onClick={() => {
+            setState({
+              ...state,
+              confirmed: false,
+              delete: false,
+              value:'',
+            })
+          }}
+        >
+        Resetear, volver atrás
+        </button>
+        </React.Fragment> 
+      );
+    }
 }
 
 export { UseState };
