@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/codigos-seguridad/static/css/main.1d766016.css",
+    "main.js": "/codigos-seguridad/static/js/main.26c1fc81.js",
+    "index.html": "/codigos-seguridad/index.html",
+    "main.1d766016.css.map": "/codigos-seguridad/static/css/main.1d766016.css.map",
+    "main.26c1fc81.js.map": "/codigos-seguridad/static/js/main.26c1fc81.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d766016.css",
+    "static/js/main.26c1fc81.js"
+  ]
+}
